@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    // using proxy server of the given api because of CORS issue
+    baseURL: 'https://quad-b-task-server.vercel.app/api',
     withCredentials: true
 
 });

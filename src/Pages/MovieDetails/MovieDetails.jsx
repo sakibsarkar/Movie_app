@@ -1,4 +1,5 @@
 import "./MovieDetails.css";
+import Loader from "../../Components/Loader/Loader";
 import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -10,7 +11,7 @@ import { addBookings } from "../../Functions/Localstorage";
 const MovieDetails = () => {
     const { id } = useParams()
     const axios = useAxios()
-    const { data = {} } = useQuery({
+    const { data = {}, isLoading } = useQuery({
         queryKey: ["movieDetail", id],
         queryFn: async (req, res) => {
             const { data: detail } = await axios.get(`/data/${id}`)
@@ -53,55 +54,62 @@ const MovieDetails = () => {
     }
 
     return (
-        <div className="info_center">
-            <div className="detailContainer">
-                <img src={img} alt="" />
-
-                <div className="detail_info">
-                    <h1>Movie: {name}</h1>
-                    <p><span className="bold">Lang: </span>{language} - <span className="bold">status: </span>{status} - <span className="bold">Runtime: </span>{runtime} - <span className="bold">Rating: </span> {rating?.average || 0}k</p>
-                    <div dangerouslySetInnerHTML={{ __html: summary }}>
-                    </div>
-                    <button onClick={handleShowForm}>Book ticket</button>
-                </div>
-            </div>
-
-
-
+        <>
             {
-                showForm ?
-                    <div className="formContainer">
+                isLoading ?
+                    <Loader />
+                    :
+                    <div className="info_center">
+                        <div className="detailContainer">
+                            <img src={img} alt="" />
 
-                        <form className="bookingForm" onSubmit={handleBooking}>
-                            <div className="cancel" onClick={handleHideForm}>
-                                <RxCross2 />
+                            <div className="detail_info">
+                                <h1>Movie: {name}</h1>
+                                <p><span className="bold">Lang: </span>{language} - <span className="bold">status: </span>{status} - <span className="bold">Runtime: </span>{runtime} - <span className="bold">Rating: </span> {rating?.average || 0}k</p>
+                                <div dangerouslySetInnerHTML={{ __html: summary }}>
+                                </div>
+                                <button onClick={handleShowForm}>Book ticket</button>
                             </div>
-                            <div>
-                                <p>Movie</p>
-                                <input type="text" readOnly defaultValue={name} />
-                            </div>
+                        </div>
 
-                            <div>
-                                <p>Your name</p>
-                                <input type="text" required name="name" />
-                            </div>
 
-                            <div>
-                                <p>Your Email <span>(optional)</span></p>
-                                <input type="email" name="email" />
-                            </div>
 
-                            <div>
-                                <p>Number of Tickets</p>
-                                <input type="number" name="tickets" required defaultValue={1} min={1} />
-                            </div>
-                            <button>Submit</button>
-                        </form>
+                        {
+                            showForm ?
+                                <div className="formContainer">
+
+                                    <form className="bookingForm" onSubmit={handleBooking}>
+                                        <div className="cancel" onClick={handleHideForm}>
+                                            <RxCross2 />
+                                        </div>
+                                        <div>
+                                            <p>Movie</p>
+                                            <input type="text" readOnly defaultValue={name} />
+                                        </div>
+
+                                        <div>
+                                            <p>Your name</p>
+                                            <input type="text" required name="name" />
+                                        </div>
+
+                                        <div>
+                                            <p>Your Email <span>(optional)</span></p>
+                                            <input type="email" name="email" />
+                                        </div>
+
+                                        <div>
+                                            <p>Number of Tickets</p>
+                                            <input type="number" name="tickets" required defaultValue={1} min={1} />
+                                        </div>
+                                        <button>Submit</button>
+                                    </form>
+                                </div>
+                                : ""
+                        }
+
                     </div>
-                    : ""
             }
-
-        </div>
+        </>
     );
 };
 

@@ -1,11 +1,12 @@
 import "./Movies.css";
+import Loader from "../../Components/Loader/Loader";
 import MovieCard from "../../Cards/MovieCard/MovieCard";
 import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 
 const Movies = () => {
     const axios = useAxios()
-    const { data } = useQuery({
+    const { data, isLoading } = useQuery({
         queryKey: ["movieData"],
         queryFn: async () => {
             const { data: movie } = await axios.get("/data")
@@ -15,13 +16,18 @@ const Movies = () => {
 
 
     return (
-        <div>
+        <div className="movie_page">
             <h1>Movie Data</h1>
-            <div className="moviesContainer">
-                {
-                    data?.map((movie, index) => <MovieCard key={index} movie={movie} />)
-                }
-            </div>
+            {
+                isLoading ?
+                    <Loader />
+                    :
+                    <div className="moviesContainer">
+                        {
+                            data?.map((movie, index) => <MovieCard key={index} movie={movie} />)
+                        }
+                    </div>
+            }
         </div>
     );
 };
