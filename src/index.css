@@ -3,3 +3,8 @@
 * {
   font-family: 'Work Sans', sans-serif;
 }
+
+.no_scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
