@@ -44,6 +44,7 @@
 }
 
 .movieCard:hover .movieImg {
+    filter: blur(5px);
     width: 350px !important;
 
 

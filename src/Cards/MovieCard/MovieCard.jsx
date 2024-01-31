@@ -35,7 +35,7 @@ const MovieCard = ({ movie = {} }) => {
                 <p className="para_row"><span className="bold para_row"><IoStarSharp />Avg Rating:</span>{ratingValue}</p>
                 <p className="para_row"><span className="bold para_row"><HiFire />Type:</span>{type}</p>
 
-                <a className="para_row" href={network?.officialSite}><FaGlobeAmericas />{network?.country?.name || "Not Define"}</a>
+                <p className="para_row"><FaGlobeAmericas />{network?.country?.name || "Not Define"}</p>
 
                 <p><span className="bold"><TbLanguageKatakana />Language</span>: {language}</p>
 
