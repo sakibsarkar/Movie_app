@@ -1,3 +1,4 @@
+import Bookings from "../Pages/Booking/Bookings";
 import Home from "../Pages/Home/Home";
 import Layout from "../Layout/Layout";
 import MovieDetails from "../Pages/MovieDetails/MovieDetails";
@@ -15,6 +16,10 @@ export const route = createBrowserRouter([
             {
                 path: "/show/:id",
                 element: <MovieDetails />
+            },
+            {
+                path: "/my_bookings",
+                element: <Bookings />
             }
         ]
     }

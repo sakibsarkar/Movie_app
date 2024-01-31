@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 import { addBookings } from "../../Functions/Localstorage";
 
 const MovieDetails = () => {
@@ -26,16 +27,20 @@ const MovieDetails = () => {
     const handleBooking = (e) => {
         e.preventDefault()
         const form = e.target
-        const name = form.name.value
+        const guestName = form.name.value
         const email = form.email.value
         const tickets = form.tickets.value
         const bookingData = {
-            name,
+            movieName: name,
+            guestName,
             email,
             tickets
         }
 
         addBookings(bookingData)
+        document.body.classList.remove("no_scroll")
+        setShowForm(false)
+        toast.success("Successfuly ticket booked")
     }
 
     const handleHideForm = () => {

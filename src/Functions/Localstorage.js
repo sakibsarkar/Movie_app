@@ -8,3 +8,8 @@ export const addBookings = (data) => {
 
     localStorage.setItem("booking", JSON.stringify(newBookings))
 }
+
+export const getBookingData = () => {
+    const data = JSON.parse(localStorage.getItem("booking")) || []
+    return data
+}

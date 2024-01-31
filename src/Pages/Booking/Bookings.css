@@ -1,0 +1,16 @@
+.bookingsPage {
+    min-height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bookingData {
+    display: grid;
+    grid-template-columns: repeat(1, 760px);
+    gap: 20px;
+    justify-content: center;
+}
