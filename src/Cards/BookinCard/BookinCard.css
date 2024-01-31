@@ -1,5 +1,5 @@
 .historyCard {
-    width: 760px;
+    width: calc(100% - 30px);
     min-height: 125px;
     background-color: rgb(255, 255, 255);
     border-radius: 14px;
@@ -145,7 +145,7 @@
 
 @media screen and (max-width: 810px) {
     .historyCard {
-        width: 90vw;
+        width: calc(100% - 30px);
     }
 }
 
