@@ -19,9 +19,9 @@
 .movieCard .status {
 
     position: absolute;
-    right: -38px;
+    left: -38px;
     top: 26px;
-    transform: rotate(45deg);
+    transform: rotate(315deg);
     width: 136px;
     height: auto;
     display: flex;
@@ -118,3 +118,22 @@
 .bold {
     font-weight: 600;
 }
+
+
+
+@media screen and (max-width: 560px) {
+
+    .movieCard {
+        height: 250px;
+    }
+
+    .movieCard .movieImg {
+        width: 190px;
+    }
+
+    .movieCard .movieInfo {
+        width: calc(100% - 190px);
+    }
+}
+
+@media screen and (min-width: 1921px) {}

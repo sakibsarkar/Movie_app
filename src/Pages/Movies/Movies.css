@@ -4,3 +4,18 @@
     justify-content: center;
     gap: 20px;
 }
+
+
+@media screen and (max-width: 560px) {
+    .moviesContainer {
+        grid-template-columns: repeat(1, 95vw);
+    }
+}
+
+@media screen and (min-width: 560px) and (max-width: 1270px) {
+    .moviesContainer {
+        grid-template-columns: repeat(1, 90vw);
+    }
+}
+
+@media screen and (min-width: 1921px) {}
