@@ -1,0 +1,6 @@
+.moviesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 600px);
+    justify-content: center;
+    gap: 20px;
+}
